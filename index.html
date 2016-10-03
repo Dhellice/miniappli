@@ -4,18 +4,15 @@
 		<title>Cocktails</title>
 		<meta charset="UTF-8">
 
-
-		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
-		<script type="text/javascript" href="js/bootstrap.js"></script>
-		<script type="text/javascript" href="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-default navbar-static-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -68,6 +65,57 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+  <div class="recette">
+    <form method="post">
+      <br>
+      <h1>Titre</h1>
+      <input id="case" type="text" name="title" placeholder="title">
+      <br>
+      <h1>Ingrédients</h1>
+      <input id="case" type="textarea" name="content" placeholder="content">
+      <br>
+      <h1>Recette</h1>
+      <input id="cases" type="textarea" name="content" placeholder="content">
+      <br>
+      <input type="submit" value="Post">
+    </form>
+  </div>
+
+
+<footer class="footer-distributed">
+
+      <div class="footer-left">
+
+        <p class="footer-links">
+          <a href="#">Home</a>
+          ·
+          <a href="#">Blog</a>
+          ·
+          <a href="#">Pricing</a>
+          ·
+          <a href="#">About</a>
+          ·
+          <a href="#">Faq</a>
+          ·
+          <a href="#">Contact</a>
+        </p>
+
+        <p class="footer-company-name">Company Name &copy; 2015</p>
+
+      </div>
+
+      <div class="footer-right">
+
+        <form method="get" action="#">
+          <input placeholder="Search our website" name="search" />
+          <i class="fa fa-search"></i>
+        </form>
+
+      </div>
+<script src="js/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
+    </footer>
+
 
 	</body>
 	</html>
