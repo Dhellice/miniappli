@@ -6,10 +6,22 @@ body{
 }
 .recette{
 	background-color: #292c2f;
-	height: 500px;
-	width: 900px;
-	margin-left: 500px;
+	height: 600px;
+	width: 500px;
+	margin-left: 50px;
+	margin-top: 70px;
 	border-radius: 20px;
+	display: inline-block;
+}
+#recette1{
+	background-color: #292c2f;
+	height: 600px;
+	width: 1200px;
+	margin-left: 100px;
+	margin-top: 70px;
+	border-radius: 20px;
+	display: inline-block;
+	position: absolute;
 }
 .recette input {
 	margin-bottom: 30px;
@@ -21,14 +33,17 @@ body{
 }
 .recette #cases{
 	width: 400px;
-	height: 60px;
+	height: 100px;
+}
+.recette #casess{
+	margin-top: 20px;
 }
 .recette h1{
 	color: white;
 	margin-left: 40px;
 } 
 footer{
-	position: fixed;
+	position: relative;
 	bottom: 0;
 }
 
