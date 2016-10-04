@@ -1,23 +1,42 @@
-// Ajout/supprime ingrédient recette
+// Ajout/supprime ingrédient recette ajout tab for ajout li
 
-function ajout()
+var ingredients = [];
+console.log(ingredients.length);
+
+	function ajout_recette()
 		{
-            ingre = document.getElementById("listeingredient");
-            ingre = document.getElementById("ingredients").value;
+            liste = document.getElementById("recette1");
+            texte = document.getElementById("recette").value;
+            
             nouveauli = document.createElement("li");
-            nouveauli.innerHTML = ingre;
+            nouveauli.innerHTML = texte;
             liste.appendChild(nouveauli);
+            
 		}
-    function supprime()
+    function supprime_recette()
     {
-        
-        ingre = document.getElementById("listeingredient");
+        liste = document.getElementById("recette1");
         if (document.getElementsByTagName("li").length > 0)
             {
                 liste.removeChild(liste.lastChild);
             }
     }
-     
-        
-        liste = document.getElementById("listerecette");
-            texte = document.getElementById("recette").value;
+	function ajout_ingredient()
+		{
+            liste = document.getElementById("ingredient1");
+            texte = document.getElementById("igredients").value;
+            ingredients[ingredients.length] = texte;
+            console.log(ingredients);
+            nouveauli = document.createElement("li");
+            nouveauli.innerHTML = texte;
+            liste.appendChild(nouveauli);
+            
+		}
+    function supprime_ingredient()
+    {
+        liste = document.getElementById("ingredient1");
+        if (document.getElementsByTagName("li").length > 0)
+            {
+                liste.removeChild(liste.lastChild);
+            }
+    }

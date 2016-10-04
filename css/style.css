@@ -13,7 +13,8 @@ body{
 	border-radius: 20px;
 	display: inline-block;
 }
-#recette1{
+.recette2{
+    color: white;
 	background-color: #292c2f;
 	height: 600px;
 	width: 1200px;
@@ -27,17 +28,7 @@ body{
 	margin-bottom: 30px;
 	margin-left: 60px;
 }
-.recette #case{
-	width: 400px;
-	height: 30px;
-}
-.recette #cases{
-	width: 400px;
-	height: 100px;
-}
-.recette #casess{
-	margin-top: 20px;
-}
+
 .recette h1{
 	color: white;
 	margin-left: 40px;
