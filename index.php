@@ -52,12 +52,12 @@
       <input id="case" type="text" name="title" placeholder="title">
       <br>
       <h1>Ingrédients</h1>
-      <input id="case" type="textarea" name="content" placeholder="content">
+      <input id="igrédients" type="textarea" name="content" placeholder="content">
       <br>
       <h1>Recette</h1>
-      <input id="cases" type="textarea" name="content" placeholder="content">
+      <input id="recette" type="textarea" name="content" placeholder="content">
       <br>
-      <input id="casess" type="submit" value="Post">
+      <input type="submit" value="Post"  onclick="ajout()">
     </form>
   </div>
 
