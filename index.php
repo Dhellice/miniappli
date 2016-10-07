@@ -1,100 +1,52 @@
 <!DOCTYPE html>
-	<html>
-	<head>
-		<title>CocktailsMania</title>
-		<meta charset="UTF-8">
-		<script src="js/script.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-	</head>
+<html ng-app="AngularLab"  ng-controller="MainCtrl" ng-cloak>
+  <head>
+    <title ng-if="!unreadMessages && !validate">Ariane</title>
+    <title ng-if="unreadMessages || validate">Ariane ({{unreadMessages + userData.receivedReports.length}})</title>
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <link href="css/material-icons.css" rel="stylesheet">
+    <link href="css/angular-ui-tree.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+  </head>
 	<body>
-    <nav class="navbar navbar-inverse navbar-default navbar-static-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Cocktails</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Ingredients<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Recette</a></li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-  <div class="recette">
-    <form method="post">
-      <br>
-      <h1>Titre</h1>
-      <input id="case" type="text" name="title" placeholder="title">
-      <br>
-      <h1>Ingrédients</h1>
-      <input id="igredients" type="textarea" name="content" placeholder="content">
-      <br>
-        <input type="button" value="Ok" onclick="ajout_ingredient()">
-        <input type="button" value="supprime" onclick="supprime_ingredient()">
-      <h1>Recette</h1>
-      <input id="recette" type="textarea" name="content" placeholder="content">
-      <br>
-      <input type="button" value="Ok" onclick="ajout_recette()">
-        <input type="button" value="supprime" onclick="supprime_recette()">
-    </form>
-  </div>
-
-<div class="recette2">
-    <h2>Recette</h2>
-    <ul id="recette1">
-        <li>Pouet</li>
-    </ul>
-    <h2>Ingredients</h2>
-    <ul id="ingredient1">
-        <li>lol</li>
-    </ul>
-</div>
-
-<footer class="footer-distributed">
-
-      <div class="footer-left">
-
-        <p class="footer-links">
-          <a href="#">Contact</a>
-        </p>
-
-        <p class="footer-company-name">CocktailsMania</p>
-
+    <header>
+      
+    </header>
+    <main>
+      <div class="ui-view-container">
+        <ui-view></ui-view>
       </div>
-
-      <div class="footer-right">
-
-        <form method="get" action="#">
-          <input placeholder="Search our website" name="search" />
-          <i class="fa fa-search"></i>
-        </form>
-
-      </div>
-<script src="js/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
+    </main>
+    <footer>
+      
     </footer>
+    <!--SCRIPTS-->
 
+    <!--Core scripts-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/angular-153.min.js"></script>
 
+    <!--Angular Plugins-->
+    <script type="text/javascript" src="js/angular-animate-153.min.js"></script>
+    <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/angular-materialize.min.js"></script>
+    <script type="text/javascript" src="js/uiBreadcrumbs.min.js"></script>
+    <script type="text/javascript" src="js/angular-ui-tree.min.js"></script>
+    <script type="text/javascript" src="js/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="js/vfs_fonts.min.js"></script>
+
+    <!--App scripts-->
+    <script type="text/javascript" src="js/factories.js"></script>
+    <script type="text/javascript" src="js/angularlab.js"></script>
+    <!--Materialize init scripts-->
+    <script>
+      $(document).ready(function(){
+          $(".button-collapse").sideNav();
+          $('.modal-trigger').leanModal();
+        });
+    </script>
 	</body>
-	</html>
+</html>
