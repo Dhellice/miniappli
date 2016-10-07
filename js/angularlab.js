@@ -209,7 +209,7 @@ function loadTable(localStorageService,table){
 	return getItem(localStorageService,table);
 }
 
-app.controller('MainCtrl',['$scope','$rootScope','users','reports','sites','branches','test','db','$interval','$state','$stateParams','localStorageService','userRequest',function($scope,$rootScope,users,reports,sites,branches,test,db,$interval,$state,$stateParams,localStorageService,userRequest){
+app.controller('MainCtrl',['$scope','$rootScope','db','$interval','$state','$stateParams','localStorageService',function($scope,$rootScope,db,$interval,$state,$stateParams,localStorageService){
 	console.log('Main');
 
 }]);
@@ -219,12 +219,8 @@ app.controller('ManageCtrl', [
 	'$state',
 	'$rootScope',
 	'$filter',
-	'users',
-	'branches',
-	'reports',
-	'sites',
 	'localStorageService',
-	'userRequest',function($scope,$state,$rootScope,$filter,users,branches,reports,sites,localStorageService,userRequest){
+	,function($scope,$state,$rootScope,$filter,localStorageService){
 	
 	}]);
 
@@ -232,21 +228,21 @@ app.controller('ManageCtrl', [
 
 	}]);
 
-	app.controller('HomeCtrl',['$state','$scope','$rootScope','reports','users','branches','news','localStorageService',function ($state,$scope,$rootScope,reports,users,branches,news,localStorageService){
+	app.controller('HomeCtrl',['$state','$scope','$rootScope','localStorageService',function ($state,$scope,$rootScope,localStorageService){
 
 	}]);
 
 	//Test d'affichage des utilisateurs (voir page /test)
-	app.controller('UserCtrl',['$scope','$rootScope','users','branches','$state','localStorageService',function($scope,$rootScope,users,branches,$state,localStorageService){
+	app.controller('UserCtrl',['$scope','$rootScope','$state','localStorageService',function($scope,$rootScope,$state,localStorageService){
 
 	}]);
 
 	//Messagerie
-	app.controller('MsgCtrl',['$scope','users','messages','$rootScope','localStorageService','mail','userRequest','$state',function($scope,users,messages,$rootScope,localStorageService,mail,userRequest,$state){
+	app.controller('MsgCtrl',['$scope','$rootScope','localStorageService','mail','$state',function($scope,$rootScope,localStorageService,mail,$state){
 
 	}]);
 
 //Authentification front
-app.controller('AuthCtrl',['$scope','users','$state','$http','branches','localStorageService','userRequest','$window','$location',function($scope,users,$state,$http,branches,localStorageService,userRequest,$window,$location){
+app.controller('AuthCtrl',['$scope','$state','$http','localStorageService','$window','$location',function($scope,$state,$http,localStorageService,$window,$location){
 
 }]);
