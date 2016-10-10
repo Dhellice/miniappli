@@ -293,6 +293,7 @@ app.controller('ManageCtrl', [
 			};
 			$scope.recipes.push(newRecipe);
 			$('#recipeModal').closeModal();
+			$scope.init();
 		}
 
 		$scope.myIngredient = function(){
