@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
 		<!-- Modal Trigger -->
-		<a class="waves-effect waves-light btn modal-trigger red darken-1" href="#ingredientModal">Add Ingredient</a>
-		<a class="waves-effect waves-light btn modal-trigger red darken-1" href="#recipeModal">Add Recipe</a>
+		<a class="waves-effect waves-light btn modal-trigger red darken-1" href="#ingredientModal">Ajout d'ingrédient</a>
+		<a class="waves-effect waves-light btn modal-trigger red darken-1" href="#recipeModal">Ajout recette</a>
 
 		<!-- Modal Structure -->
 		<div id="ingredientModal" class="modal">
 		    <div class="modal-content">
-		      	<h4>Add Ingredient</h4>
+		      	<h4>Ajout d'ingrédient</h4>
 		      	<form class="col s12" ng-submit="addIngredient()">
 		      		<div class="row">
 				        <div class="input-field col s12">
@@ -15,16 +15,16 @@
 				          <label for="ingredientName">Nom</label>
 				        </div>
 				    </div>
-				    <button class="btn waves-effect waves-light red" type="submit" name="action">Submit</button>
+				    <button class="btn waves-effect waves-light red" type="submit" name="action">Envoyer</button>
 		      	</form>
 		    </div>
 		    <div class="modal-footer">
-		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
 		    </div>
 		</div>
 		<div id="recipeModal" class="modal">
 		    <div class="modal-content">
-		      	<h4>Add Recipe</h4>
+		      	<h4>Ajout recette</h4>
 		      	<form class="col s12" ng-submit="submitRecipe()">
 		      		<div class="row">
 				        <div class="input-field col s12">
@@ -49,18 +49,18 @@
 				    <div class="row">
 				    	<div class="input-field col s12">
 							<select class="browser-default" ng-model="item" ng-change="addToRecipe()">
-								<option value="" disabled selected>Choose your option</option>
-								<option style="color: black" value="{{ing}}" ng-repeat="ing in ingredients">{{ing}}</option>
+								<option value="" disabled selected>Liste des ingrédients</option>
+								<option value="{{ing}}" ng-repeat="ing in ingredients">{{ing}}</option>
 							</select>
 						</div>
 				    </div>
 				    <div class="row">
-				    	<button class="btn waves-effect waves-light red" type="submit" name="action">Submit</button>
+				    	<button class="btn waves-effect waves-light red" type="submit" name="action">Envoyer</button>
 				    </div>
 		      	</form>
 		    </div>
 		    <div class="modal-footer">
-		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
 		    </div>
 		</div>
 	</div>
@@ -76,7 +76,7 @@
     	</section>
     	<section class="col s6">
 			<h3>Liste des recettes</h3>
-    		<div class="col s12 grey darken-1" ng-repeat="recipe in recipes">
+    		<div class="col s12 grey darken-1" ng-repeat='recipe in recipes | inArray:myIngredientsList:"ingredients"'>
     			<h4 class="col s12">{{recipe.name}}</h4>
     			<p class="col s12">{{recipe.description}}</p>
     			<div class="col s12">
@@ -84,6 +84,23 @@
     					<i class="material-icons">label</i>{{ing}}
     				</div>
     			</div>
+    		</div>
+    	</section>
+    </div>
+    <div class="row">
+    	<section class="col s12">
+    		<h3 class="center-align">Mes ingrédients</h3>
+    		<div class="col s12">
+    			<select class="browser-default" ng-model="myItem" ng-change="myIngredient()">
+					<option value="" disabled selected>Liste des ingrédients</option>
+					<option value="{{ingredient}}" ng-repeat="ingredient in ingredients">{{ingredient}}</option>
+				</select>
+    		</div>
+    		<div class="col s12 grey" ng-repeat="element in myIngredientsList">
+    			<h5 style="margin-top: 0; margin-bottom: 0" class="col s8">{{element}}</h5>
+    			<a class="btn-floating btn-large waves-effect waves-light red right" ng-click="deleteMyIngredient(element)">
+    			 	<i class="material-icons">delete</i>
+    			</a>
     		</div>
     	</section>
     </div>

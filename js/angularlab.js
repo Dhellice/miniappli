@@ -143,6 +143,34 @@ app.filter('orderObjectBy', function(){
 		return array;
 	}
 });
+
+//Filter d'ordonnancement objets par propriété
+app.filter('inArray', function($filter){
+    return function(list, arrayFilter, element){
+    	var array = [];
+    	if(arrayFilter && arrayFilter.length !== 0){
+    		for(var i = 0; i < list.length; i++){
+	    		for(var j = 0; j < arrayFilter.length; j++){
+	    			for(var k = 0; k < list[i].ingredients.length; k++){
+	    				//console.log([list[i].ingredients[k], arrayFilter[j]])
+		    			if(list[i].ingredients[k] === arrayFilter[j]){
+		    				array.push(list[i]);
+		    			}
+	    			}
+	    		}
+	    	}
+	    	//console.log(array);
+    		return array;
+    	}
+    	else return list;
+    	
+        /*if(arrayFilter){
+            return $filter("filter")(list, function(listItem){
+                return arrayFilter.indexOf(listItem[element]) != -1;
+            });
+        }*/
+    };
+});
 //Enregistre une clé avec une valeur attribué dans le locale storage /!\ Ne pas modifier localStorageService
 function submit(localStorageService, key, val){
 	return localStorageService.set(key, val);
@@ -208,11 +236,18 @@ app.controller('ManageCtrl', [
 		$scope.recipes = [];
 		$scope.ingredients = ['Rhum','gin'];
 		$scope.item;
-		$scope.recipeIngredients;
+		$scope.myItem;
+		$scope.recipeIngredients = [];
+		$scope.myIngredientsList = [];
 
 		$scope.init = function(){
 			console.log('init');
+			$scope.recipeName = "";
+			$scope.recipeDescription = "";
+			$scope.item = "";
+			$scope.myItem = "";
 			$scope.recipeIngredients = [];
+			$scope.myIngredientsList = [];
 		}
 
 		$scope.addIngredient = function(){
@@ -238,6 +273,14 @@ app.controller('ManageCtrl', [
 			}
 		}
 
+		$scope.deleteMyIngredient = function(ingredient){
+			for(var i = 0; i < $scope.myIngredientsList.length; i++){
+				if($scope.myIngredientsList[i] === ingredient){
+					$scope.myIngredientsList.splice(i, 1);
+				}
+			}
+		}
+
 		$scope.addToRecipe = function(){
 			$scope.recipeIngredients.push($scope.item);
 		}
@@ -250,6 +293,10 @@ app.controller('ManageCtrl', [
 			};
 			$scope.recipes.push(newRecipe);
 			$('#recipeModal').closeModal();
+		}
+
+		$scope.myIngredient = function(){
+			$scope.myIngredientsList.push($scope.myItem);
 		}
 
 		$scope.init($scope.recipes);
