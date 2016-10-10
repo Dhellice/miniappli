@@ -1,1 +1,96 @@
-hello world
+<div class="container">
+	<div class="row">
+		<!-- Modal Trigger -->
+		<a class="waves-effect waves-light btn modal-trigger red darken-1" href="#ingredientModal">Add Ingredient</a>
+		<a class="waves-effect waves-light btn modal-trigger red darken-1" href="#recipeModal">Add Recipe</a>
+
+		<!-- Modal Structure -->
+		<div id="ingredientModal" class="modal">
+		    <div class="modal-content">
+		      	<h4>Add Ingredient</h4>
+		      	<form class="col s12" ng-submit="addIngredient()">
+		      		<div class="row">
+				        <div class="input-field col s12">
+				          <input id="ingredientName" type="text" class="validate" ng-model="ingredientName" required>
+				          <label for="ingredientName">Nom</label>
+				        </div>
+				    </div>
+				    <button class="btn waves-effect waves-light red" type="submit" name="action">Submit</button>
+		      	</form>
+		    </div>
+		    <div class="modal-footer">
+		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		    </div>
+		</div>
+		<div id="recipeModal" class="modal">
+		    <div class="modal-content">
+		      	<h4>Add Recipe</h4>
+		      	<form class="col s12" ng-submit="submitRecipe()">
+		      		<div class="row">
+				        <div class="input-field col s12">
+				          <input id="recipeName" type="text" class="validate" ng-model="recipeName" required>
+				          <label for="recipeName">Nom</label>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="input-field col s12">
+				          <input id="recipeDescription" type="text" class="validate" ng-model="recipeDescription" required>
+				          <label for="recipeDescription">Description</label>
+				        </div>
+				    </div>
+				    <div class="row">
+			    		<div class="col s12 grey" ng-repeat="recipeIngredient in recipeIngredients">
+			    			<h4 class="col s8">{{recipeIngredient}}</h4>
+			    			 <a class="btn-floating btn-large waves-effect waves-light red right" ng-click="deleteRecipeIngredient(recipeIngredient)">
+			    			 	<i class="material-icons">delete</i>
+			    			 </a>
+			    		</div>
+				    </div>
+				    <div class="row">
+				    	<div class="input-field col s12">
+							<select class="browser-default" ng-model="item" ng-change="addToRecipe()">
+								<option value="" disabled selected>Choose your option</option>
+								<option style="color: black" value="{{ing}}" ng-repeat="ing in ingredients">{{ing}}</option>
+							</select>
+						</div>
+				    </div>
+				    <div class="row">
+				    	<button class="btn waves-effect waves-light red" type="submit" name="action">Submit</button>
+				    </div>
+		      	</form>
+		    </div>
+		    <div class="modal-footer">
+		      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		    </div>
+		</div>
+	</div>
+    <div class="row">
+    	<section class="col s6">
+			<h3>Liste des ingrédients</h3>
+    		<div class="col s12 grey darken-1 ingredient" ng-repeat="ingredient in ingredients">
+    			<h4 style="margin-top: 0; margin-bottom: 0" class="col s8">{{ingredient}}</h4>
+    			<a class="btn-floating btn-large waves-effect waves-light red right" ng-click="deleteIngredient(ingredient)">
+    			 	<i class="material-icons">delete</i>
+    			</a>
+    		</div>
+    	</section>
+    	<section class="col s6">
+			<h3>Liste des recettes</h3>
+    		<div class="col s12 grey darken-1" ng-repeat="recipe in recipes">
+    			<h4 class="col s12">{{recipe.name}}</h4>
+    			<p class="col s12">{{recipe.description}}</p>
+    			<div class="col s12">
+    				<div class="col s4 red darken-1" ng-repeat="ing in recipe.ingredients">
+    					<i class="material-icons">label</i>{{ing}}
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    </div>
+</div>
+<script>
+	$(document).ready(function(){
+		$('.modal-trigger').leanModal();
+		$('select').material_select();
+	});
+</script>

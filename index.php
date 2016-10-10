@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="AngularLab"  ng-controller="MainCtrl" ng-cloak>
   <head>
-    <title ng-if="!unreadMessages && !validate">Ariane</title>
-    <title ng-if="unreadMessages || validate">Ariane ({{unreadMessages + userData.receivedReports.length}})</title>
+    <title>Drink</title>
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
     <link href="css/material-icons.css" rel="stylesheet">
     <link href="css/angular-ui-tree.min.css" rel="stylesheet">
@@ -44,9 +43,9 @@
     <!--Materialize init scripts-->
     <script>
       $(document).ready(function(){
-          $(".button-collapse").sideNav();
-          $('.modal-trigger').leanModal();
-        });
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+      });
     </script>
 	</body>
 </html>

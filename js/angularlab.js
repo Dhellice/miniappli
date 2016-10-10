@@ -70,30 +70,6 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRo
 		},
 		module:'private'
 	})
-	$stateProvider.state('profile',{
-		url:'/profile',
-		templateUrl:'templates/profile.html',
-		params:{
-			name: 'profile'
-		},
-		controller:'UserCtrl',
-		data :{
-			displayName:'Profil'
-		},
-		module:'private'
-	})
-	.state('messages',{
-		url:'/messages',
-		templateUrl:'templates/messages.html',
-		controller:'MsgCtrl',
-		data:{
-			displayName:'Messages'
-		},
-		params:{
-			name: 'messages'
-		},
-		module:'private'
-	})
 	.state('management',{
 		url:'/management',
 		templateUrl:'templates/management.html',
@@ -110,7 +86,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRo
 }]);
 app.config(function (localStorageServiceProvider) {
 	localStorageServiceProvider
-	.setPrefix('mmrt')
+	.setPrefix('drink_ss_')
 	.setNotify(true, true)
 });
 
@@ -229,7 +205,54 @@ app.controller('ManageCtrl', [
 	}]);
 
 	app.controller('HomeCtrl',['$state','$scope','$rootScope','localStorageService',function ($state,$scope,$rootScope,localStorageService){
+		$scope.recipes = [];
+		$scope.ingredients = ['Rhum','gin'];
+		$scope.item;
+		$scope.recipeIngredients;
 
+		$scope.init = function(){
+			console.log('init');
+			$scope.recipeIngredients = [];
+		}
+
+		$scope.addIngredient = function(){
+			if($scope.ingredientName.length > 0 && $scope.ingredientName !== undefined){
+				$scope.ingredients.push($scope.ingredientName);
+				$('#ingredientModal').closeModal();
+			}
+		}
+
+		$scope.deleteIngredient = function(ingredient){
+			for(var i = 0; i < $scope.ingredients.length; i++){
+				if($scope.ingredients[i] === ingredient){
+					$scope.ingredients.splice(i, 1);
+				}
+			}
+		}
+
+		$scope.deleteRecipeIngredient = function(ingredient){
+			for(var i = 0; i < $scope.recipeIngredients.length; i++){
+				if($scope.recipeIngredients[i] === ingredient){
+					$scope.recipeIngredients.splice(i, 1);
+				}
+			}
+		}
+
+		$scope.addToRecipe = function(){
+			$scope.recipeIngredients.push($scope.item);
+		}
+
+		$scope.submitRecipe = function(){
+			var newRecipe = {
+				name: $scope.recipeName,
+				description: $scope.recipeDescription,
+				ingredients: $scope.recipeIngredients
+			};
+			$scope.recipes.push(newRecipe);
+			$('#recipeModal').closeModal();
+		}
+
+		$scope.init($scope.recipes);
 	}]);
 
 	//Test d'affichage des utilisateurs (voir page /test)
