@@ -150,14 +150,15 @@ app.filter('inArray', function($filter){
     	var array = [];
     	if(arrayFilter && arrayFilter.length !== 0){
     		for(var i = 0; i < list.length; i++){
+    			var ingredientsNeeded = arrayFilter.length;
+    			var match = 0;
 	    		for(var j = 0; j < arrayFilter.length; j++){
 	    			for(var k = 0; k < list[i].ingredients.length; k++){
 	    				//console.log([list[i].ingredients[k], arrayFilter[j]])
-		    			if(list[i].ingredients[k] === arrayFilter[j]){
-		    				array.push(list[i]);
-		    			}
+		    			if(list[i].ingredients[k] === arrayFilter[j]) match++;
 	    			}
 	    		}
+	    		if(match === ingredientsNeeded) array.push(list[i]);
 	    	}
 	    	//console.log(array);
     		return array;
@@ -233,8 +234,8 @@ app.controller('ManageCtrl', [
 	}]);
 
 	app.controller('HomeCtrl',['$state','$scope','$rootScope','localStorageService',function ($state,$scope,$rootScope,localStorageService){
-		$scope.recipes = [];
-		$scope.ingredients = ['Rhum','gin'];
+		$scope.recipes = getItem(localStorageService, "recipes");
+		$scope.ingredients = getItem(localStorageService, "ingredients");
 		$scope.item;
 		$scope.myItem;
 		$scope.recipeIngredients = [];
@@ -242,6 +243,7 @@ app.controller('ManageCtrl', [
 
 		$scope.init = function(){
 			console.log('init');
+			$scope.ingredientName = "";
 			$scope.recipeName = "";
 			$scope.recipeDescription = "";
 			$scope.item = "";
@@ -253,7 +255,10 @@ app.controller('ManageCtrl', [
 		$scope.addIngredient = function(){
 			if($scope.ingredientName.length > 0 && $scope.ingredientName !== undefined){
 				$scope.ingredients.push($scope.ingredientName);
+				submit(localStorageService, "ingredients", $scope.ingredients);
 				$('#ingredientModal').closeModal();
+				$scope.ingredients = getItem(localStorageService, "ingredients");
+				$scope.init();
 			}
 		}
 
@@ -261,6 +266,8 @@ app.controller('ManageCtrl', [
 			for(var i = 0; i < $scope.ingredients.length; i++){
 				if($scope.ingredients[i] === ingredient){
 					$scope.ingredients.splice(i, 1);
+					submit(localStorageService, "ingredients", $scope.ingredients);
+					$scope.init();
 				}
 			}
 		}
@@ -292,7 +299,9 @@ app.controller('ManageCtrl', [
 				ingredients: $scope.recipeIngredients
 			};
 			$scope.recipes.push(newRecipe);
+			submit(localStorageService, "recipes", $scope.recipes);
 			$('#recipeModal').closeModal();
+			$scope.recipes = getItem(localStorageService, "recipes");
 			$scope.init();
 		}
 
@@ -300,20 +309,10 @@ app.controller('ManageCtrl', [
 			$scope.myIngredientsList.push($scope.myItem);
 		}
 
-		$scope.init($scope.recipes);
+		$scope.init();
 	}]);
 
 	//Test d'affichage des utilisateurs (voir page /test)
 	app.controller('UserCtrl',['$scope','$rootScope','$state','localStorageService',function($scope,$rootScope,$state,localStorageService){
 
 	}]);
-
-	//Messagerie
-	app.controller('MsgCtrl',['$scope','$rootScope','localStorageService','mail','$state',function($scope,$rootScope,localStorageService,mail,$state){
-
-	}]);
-
-//Authentification front
-app.controller('AuthCtrl',['$scope','$state','$http','localStorageService','$window','$location',function($scope,$state,$http,localStorageService,$window,$location){
-
-}]);
