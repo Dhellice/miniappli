@@ -67,7 +67,7 @@
     <div class="row">
     	<section class="col s6">
 			<h3>Liste des ingrédients</h3>
-    		<div class="col s12 grey darken-1 ingredient" ng-repeat="ingredient in ingredients">
+    		<div class="col s12 grey darken-1 ingredient" ng-repeat="ingredient in ingredients track by $index">
     			<h4 style="margin-top: 0; margin-bottom: 0" class="col s8">{{ingredient}}</h4>
     			<a class="btn-floating btn-large waves-effect waves-light red right" ng-click="deleteIngredient(ingredient)">
     			 	<i class="material-icons">delete</i>

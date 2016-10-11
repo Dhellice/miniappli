@@ -171,11 +171,16 @@ app.controller('ManageCtrl', [
 		}
 
 		$scope.addIngredient = function(){
-			if($scope.ingredientName.length > 0 && $scope.ingredientName !== undefined){
+			var inside = $scope.ingredients.indexOf($scope.ingredientName);
+			if($scope.ingredientName.length > 0 && $scope.ingredientName !== undefined && inside === -1){
 				$scope.ingredients.push($scope.ingredientName);
 				submit(localStorageService, "ingredients", $scope.ingredients);
 				$('#ingredientModal').closeModal();
 				$scope.ingredients = getItem(localStorageService, "ingredients");
+				$scope.init();
+			}
+			else{
+				$('#ingredientModal').closeModal();
 				$scope.init();
 			}
 		}
