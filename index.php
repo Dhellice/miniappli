@@ -44,22 +44,21 @@
   <div class="recette">
     <form method="post">
       <br>
-      <h1>Titre</h1>
-      <input id="case" type="text" name="title" placeholder="title">
+    <h1>Recette</h1>
+      <input id="recette" type="textarea" name="content" placeholder="content">
       <br>
+      <input type="button" value="Ok" onclick="ajout_recette()">
+        <input type="button" value="supprime" onclick="supprime_recette()">
       <h1>Ingrédients</h1>
       <input id="igredients" type="textarea" name="content" placeholder="content">
       <br>
         <input type="button" value="Ok" onclick="ajout_ingredient()">
         <input type="button" value="supprime" onclick="supprime_ingredient()">
-      <h1>Recette</h1>
-      <input id="recette" type="textarea" name="content" placeholder="content">
-      <br>
-      <input type="button" value="Ok" onclick="ajout_recette()">
-        <input type="button" value="supprime" onclick="supprime_recette()">
+        <select class="selection" onclick="newstab()">
+        <option></option>
+        </select>
     </form>
   </div>
-
 <div class="recette2">
     <h2>Recette</h2>
     <ul id="recette1">
@@ -94,7 +93,5 @@
 <script src="js/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
     </footer>
-
-
 	</body>
 	</html>
