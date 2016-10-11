@@ -4,9 +4,6 @@ var serverUrl = 'http://localhost:'+serverPort;
 
 //uglifyjs angularlab.js -o angularlab.min.js
 
-var maxLengthOfName = 30;
-var maxLengthOfTitle = 72;
-
 //Configuration des états de l'application
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 	$stateProvider.state('home',{
@@ -33,54 +30,6 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRo
 			displayName: 'Connexion',
 		},
 		module:'public'
-	})
-	$stateProvider.state('edit',{
-		url:'/edit',
-		templateUrl:'templates/edit.html',
-		params:{
-			name: 'edit'
-		},
-		controller:'ReportCtrl',
-		data: {
-			displayName: 'Edition',
-		},
-		module:'private'
-	})
-	$stateProvider.state('reports',{
-		url:'/reports',
-		templateUrl:'templates/reports.html',
-		params:{
-			name: 'reports'
-		},
-		controller:'ReportCtrl',
-		data: {
-			displayName: 'Reportings',
-		},
-		module:'private'
-	})
-	$stateProvider.state('validate',{
-		url:'/validate',
-		templateUrl:'templates/validate.html',
-		params:{
-			name: 'validate'
-		},
-		controller:'ReportCtrl',
-		data: {
-			displayName :'Consultation'
-		},
-		module:'private'
-	})
-	.state('management',{
-		url:'/management',
-		templateUrl:'templates/management.html',
-		controller:'ManageCtrl',
-		data:{
-			displayName:'Gestion'
-		},
-		params:{
-			name: 'management'
-		},
-		module:'private'
 	});
 	$urlRouterProvider.otherwise('home');
 }]);
@@ -124,27 +73,6 @@ app.directive('myBlur', function () {
 	};
 });
 
-//Filter d'ordonnancement objets par propriété
-app.filter('orderObjectBy', function(){
-	return function(input, attribute) {
-		if (!angular.isObject(input)) return input;
-
-		var array = [];
-		for(var objectKey in input) {
-			array.push(input[objectKey]);
-		}
-
-		array.sort(function(a, b){
-			a = parseInt(a[attribute]);
-			b = parseInt(b[attribute]);
-			return a - b;
-		});
-
-		return array;
-	}
-});
-
-//Filter d'ordonnancement objets par propriété
 app.filter('inArray', function($filter){
     return function(list, arrayFilter, element){
     	var array = [];
@@ -176,19 +104,9 @@ app.filter('inArray', function($filter){
 function submit(localStorageService, key, val){
 	return localStorageService.set(key, val);
 }
-function submitCookie(localStorageService, key, val, cookieDay){
-	return localStorageService.cookie.set(key, val, cookieDay);
-}
 //Récupère la valeur d'une clé du locale storage /!\ Ne pas modifier localStorageService
 function getItem(localStorageService, key){
 	return localStorageService.get(key);
-}
-function getCookie(localStorageService, key){
-	return localStorageService.cookie.get(key);
-}
-//Supprime le cookie
-function deleteCookie(localStorageService, key){
-	return localStorageService.cookie.remove(key);
 }
 
 //TEST - Charge en locale toute les tables nécessaires au stockage des informations
