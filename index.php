@@ -35,7 +35,9 @@
         <br>
         <select id="Select">
         </select>
+        <br>
         <input type="button" value="add" onclick="add_selection()">
+        <input type="button" value="delete" onclick="delete_selection()">
     </form>
   </div>
     <div class="recette2">

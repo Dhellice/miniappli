@@ -28,7 +28,10 @@ body{
 	margin-bottom: 30px;
 	margin-left: 60px;
 }
-
+.recette select {
+	margin-bottom: 30px;
+	margin-left: 60px;
+}
 .recette h1{
 	color: white;
 	margin-left: 40px;
