@@ -6,8 +6,20 @@ body{
 }
 .recette{
 	background-color: #292c2f;
-	height: 600px;
+	min-height: 600px;
+	max-height: auto;
 	width: 500px;
+	margin-left: 50px;
+	margin-top: 70px;
+	border-radius: 20px;
+	display: inline-block;
+}
+.regroupementrecette{
+	background-color: #292c2f;
+	color:white;
+	min-height: 600px;
+	max-height: auto;
+	width: 90%;
 	margin-left: 50px;
 	margin-top: 70px;
 	border-radius: 20px;
@@ -16,7 +28,8 @@ body{
 .recette2{
     color: white;
 	background-color: #292c2f;
-	height: 600px;
+	min-height: 600px;
+	max-height: auto;
 	width: 1200px;
 	margin-left: 100px;
 	margin-top: 70px;

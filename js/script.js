@@ -12,14 +12,15 @@ var recette_2 = [];
 var selection = [];
 function ajout_recette() {
     liste = document.getElementById("recette1");
-    titre = document.getElementById("recette").value;
-    recette_2[recette_2.length] = titre;
-    tab2 = recette_2.concat(selection); // tentative avec un join et un concat
-    recette[recette.length] = tab2;
-    console.log(recette);
+    texte = document.getElementById("recette").value;
+    console.log(liste);
+    console.log(texte);
+    /*ingredients[ingredients.length] = texte;
+    console.log(ingredients);
     nouveauli = document.createElement("li");
-    nouveauli.innerHTML = tab2;
-    liste.appendChild(nouveauli); 
+    nouveauli.innerHTML = texte;
+    liste.appendChild(nouveauli);*/
+     
 }
 
 function supprime_recette() {
@@ -39,6 +40,11 @@ function ajout_ingredient() {
     nouveauli = document.createElement("li");
     nouveauli.innerHTML = texte;
     liste.appendChild(nouveauli);
+    var x = document.getElementById("Select");
+        var option = document.createElement("option");
+        option.innerHTML = texte;
+        x.add(option);
+
 }
 
 function supprime_ingredient() {
@@ -49,16 +55,21 @@ function supprime_ingredient() {
         var dernier = monTableau.pop();
     }
 }
-
+var ingredients_recette = [];
 function add_selection(){
     liste = document.getElementById("selection1");
-    var y = document.getElementById("Select").options[0].text; //[0] à défaut pour ledebug
-    selection[selection.length] = y;
-    console.log(selection);
+    texte = document.getElementById("Select").value;
+    console.log(liste);
+    console.log(texte);
+    ingredients_recette[ingredients_recette.length] = texte;
+    console.log(ingredients_recette);
+    console.log(ingredients_recette.length);
     nouveauli = document.createElement("li");
-    nouveauli.innerHTML = y;
+    nouveauli.innerHTML = texte;
     liste.appendChild(nouveauli);
+
 }
+var recettes =[];
 function Select() {
     for (var a = 0; a < ingredients.length; a++) {
         var x = document.getElementById("Select");
@@ -75,4 +86,24 @@ function delete_selection(){
     }
     var monTableau = selection;
     var dernier = monTableau.pop();
+}
+
+function createRecette(){
+    texte = document.getElementById("recette").value;
+    recettes[recettes.length] = [texte, ingredients_recette];
+    console.log(recettes);
+    liste = document.getElementById("listerecette");
+    console.log(liste);
+    nouveauli = document.createElement("li");
+    var HTML = "<h3>" + texte + "</h3>";
+    for (var a = 0; a < ingredients_recette.length; a++){ 
+        console.log(ingredients_recette[a]);
+        HTML = HTML + "<br> <p>" + ingredients_recette[a] + "</p>";
+
+    }
+    nouveauli.innerHTML = HTML + "<br> <br> <br>";
+    liste.appendChild(nouveauli);
+    document.getElementById("selection1").innerHTML = "";
+    ingredients_recette = [];
+
 }
