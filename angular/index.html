@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title>Angular</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script> 
+        <script src="js/main.js"></script>
+</head>
+<body>
+    <div ng-controller="mainCrtl">
+       <p>Liste ingrédients</p>
+        <ul>
+            <li ng-repeat="ingredients in ingredients">
+                {{ingredients.name}}
+            </li>
+        </ul>
+        <form>
+        <input type="text" ng-model="textIng" name="name">
+        <button class="button-info create" ng-click="addIng()">Add</button>
+        <button class="button-info create" ng-click="supIng()">Supp</button>
+        </form>
+        <form>
+           <p>Selection des elements</p>
+            <select ng-model="selection" ng-option="ingredients.name for ingredients in ingredients"></select>
+            {{selection}}
+        </form>
+                <form>
+           <p>Liste recette</p>
+            <li ng-repeat="recette in recette">
+                {{recette.name}}
+            </li>
+           <input type="text" ng-model="textRec" name="name">
+            <button class="button-info create" ng-click="adddIng()">Add</button>
+            <button class="button-info create" ng-click="sudpIng()">Supp</button>
+            
+        </form>
+    </div>
+</body>
+</html>
