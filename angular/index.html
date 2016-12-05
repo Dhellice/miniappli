@@ -10,34 +10,51 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script> 
         <script src="js/main.js"></script>
 </head>
-<body>
-    <div ng-controller="mainCrtl">
+<body ng-controller="mainCrtl">
+    <div>
        <p>Liste ingrédients</p>
         <ul>
             <li ng-repeat="ingredients in ingredients">
                 {{ingredients.name}}
             </li>
         </ul>
+        <br>
+    </div>
         <form>
-        <input type="text" ng-model="textIng" name="name">
+        <input type="text" ng-model="txting">
         <button class="button-info create" ng-click="addIng()">Add</button>
         <button class="button-info create" ng-click="supIng()">Supp</button>
+        <br>
+        <br>
         </form>
         <form>
-           <p>Selection des elements</p>
-            <select ng-model="selection" ng-option="ingredients.name for ingredients in ingredients"></select>
-            {{selection}}
+           <p>Selectionner des ingrédients</p>
+            <select ng-model="selection" ng-options="ingredients.name for ingredients in ingredients"></select>
+            <input type="button" value="add" ng-click="addSelec()">
+            <input type="button" value="delete" ng-click="supSelec()">
+            <br>
+            <br>
+            <input type="text" ng-model="textRec">
+            <button class="button-info create" ng-click="addRec()">Add</button>
+            <button class="button-info create" ng-click="supRec()">Supp</button>
+            <br>
+            <p>Ingrédients choisis</p>
+            <ul>
+            <li ng-repeat="tabselection in tabselection">
+                {{tabselection.name}}
+            </li>
+            </ul>
         </form>
-                <form>
-           <p>Liste recette</p>
-            <li ng-repeat="recette in recette">
+        <form>
+        <br>
+        <br>
+        <p>Liste recette</p>
+           <li ng-repeat="recette in recette">
                 {{recette.name}}
             </li>
-           <input type="text" ng-model="textRec" name="name">
-            <button class="button-info create" ng-click="adddIng()">Add</button>
-            <button class="button-info create" ng-click="sudpIng()">Supp</button>
-            
+
         </form>
     </div>
+    
 </body>
 </html>

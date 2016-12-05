@@ -20,7 +20,6 @@ function ajout_recette() {
     nouveauli = document.createElement("li");
     nouveauli.innerHTML = texte;
     liste.appendChild(nouveauli);*/
-     
 }
 
 function supprime_recette() {
@@ -44,7 +43,6 @@ function ajout_ingredient() {
         var option = document.createElement("option");
         option.innerHTML = texte;
         x.add(option);
-
 }
 
 function supprime_ingredient() {
